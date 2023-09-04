@@ -27,8 +27,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <PasswordField fx:id="clavePasswordField" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-            <TextField fx:id="usuarioTextField" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <PasswordField fx:id="clavePasswordField" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <TextField fx:id="usuarioTextField" prefHeight="26.0" prefWidth="165.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Label text="Correo:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="16.0" />

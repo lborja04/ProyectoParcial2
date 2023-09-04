@@ -10,6 +10,8 @@ import ec.edu.espol.proyectoparcial2.modelo.Utilitaria;
 import ec.edu.espol.proyectoparcial2.modelo.Vehiculo;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,6 +59,8 @@ public class OfertasVehiculosController {
     private Usuario usuario;
     private ArrayList<Vehiculo> vehisTot=Vehiculo.readListFileSer("vehiculos.ser");
     private Oferta oferta;
+    @FXML
+    private Label numofertasTxt;
     
     public void setUsuario(Usuario user){
         usuario=user;
@@ -71,6 +75,7 @@ public class OfertasVehiculosController {
 
     public void llenarOfertas(ActionEvent e){
         clearInfoVehi();
+        clearInfoOferta();
         Vehiculo vehi=vehisCbox.getValue();
         vehiPlacatxt.setText(vehi.getPlaca());
         vehiTxt.setText(vehi.toString());
@@ -80,6 +85,8 @@ public class OfertasVehiculosController {
             if(vehi.equals(v))
                 ofertas=v.getOfertas();
         }
+        Collections.sort(ofertas,Comparator.reverseOrder());
+        numofertasTxt.setText("Se han encontrado "+ofertas.size()+" oferta(s) para "+vehi.toString());
         ofertasCbox.getItems().addAll(ofertas);
         ofertasCbox.setOnAction(this::infoOferta);
     }
@@ -87,11 +94,14 @@ public class OfertasVehiculosController {
     public void infoOferta(ActionEvent e){
         clearInfoOferta();
         oferta=ofertasCbox.getValue();
-        compradorOfertatxt.setText(oferta.getComprador().toString());
-        precioOfertaTxt.setText(oferta.getPrecioOferta()+"");
+        try{
+            compradorOfertatxt.setText(oferta.getComprador().toString());
+            precioOfertaTxt.setText(oferta.getPrecioOferta()+"");
+        }catch(NullPointerException a){}
     }
 
     public void clearInfoVehi(){
+        numofertasTxt.setText("");
         ofertasCbox.getItems().clear();
         oferta=null;
         vehiPlacatxt.clear();
@@ -109,6 +119,8 @@ public class OfertasVehiculosController {
         if(oferta!=null){
             Alert a=new Alert(Alert.AlertType.CONFIRMATION,"¿Quiere aceptar esta oferta?");
             if(a.showAndWait().get()==ButtonType.OK){
+                Alert b=new Alert(Alert.AlertType.INFORMATION,"Notificando al comprador...");
+                b.show();
                 String asunto="OFERTA ACEPTADA";
                 String cuerpo="SU OFERTA POR "+oferta.getVehiculo()+" HA SIDO ACEPTADA, EL VENDEDOR PRONTO SE PONDRÁ EN CONTACTO.";                                                
                 Utilitaria.enviarConGMail(oferta.getComprador().getCorreo(), asunto, cuerpo);
@@ -117,6 +129,9 @@ public class OfertasVehiculosController {
                         vehisTot.remove(i);
                 }
                 Vehiculo.saveListFileSer("vehiculos.ser", vehisTot);
+                b.close();
+                Alert c=new Alert(Alert.AlertType.INFORMATION,"Se ha notificado al comprador");
+                c.show();
                 cambiarPantallaUsua(event);
             }
         }

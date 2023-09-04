@@ -34,14 +34,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -116,21 +111,21 @@ public class RegistrarVehiculoController implements Initializable{
             Label label = new Label(vehiculoRqs.get(j)+" :");
             label.setTextFill(Color.WHITE);
             label.setFont(Font.font("System", FontWeight.BOLD, 12));
+
             TextField textField = new TextField();
             textField.setMaxWidth(200);
-            textField.setStyle("-fx-background-repeat: no-repeat;");
-            textField.setStyle("-fx-background-size: cover;");
-            textField.setBorder(Border.EMPTY);
-            BackgroundFill backgroundFill = new BackgroundFill(Color.web("#FFF5E099"), CornerRadii.EMPTY, Insets.EMPTY);
-            Background background = new Background(backgroundFill);
-            textField.setBackground(background);
+
+            textField.setStyle("-fx-background-color: #FFF5E099; -fx-background-repeat: no-repeat; -fx-background-size: cover; -fx-border-color: transparent; -fx-border-width: 0;");
+
             cj.add(label, 0, j);
             cj.add(textField, 1, j);
+
             GridPane.setHalignment(label, HPos.CENTER);
             GridPane.setValignment(label, VPos.CENTER);
             GridPane.setHalignment(textField, HPos.LEFT);
             GridPane.setValignment(textField, VPos.CENTER);
         }
+
     }
     
     @Override
@@ -196,12 +191,11 @@ public class RegistrarVehiculoController implements Initializable{
                             ArrayList<Vehiculo> vehis=Vehiculo.readListFileSer("vehiculos.ser");
                             nuevo.setImagen("/imgs/" + imagenElegida.getName());
                             vehis.add(nuevo);
-                            usuario.getVehiculos().add(nuevo);
                             Vehiculo.saveListFileSer("vehiculos.ser", vehis);
-                            for(Usuario user:usuarios){
-                                if(usuario.equals(user))
-                                    user=usuario;
-                            }
+                            usuario.getVehiculos().add(nuevo);
+                            int indice=usuarios.indexOf(usuario);
+                            if (indice != -1)
+                                usuarios.set(indice, usuario);
                             Usuario.saveListFileSer("usuarios.ser", usuarios);
                             Alert alerta=new Alert(Alert.AlertType.INFORMATION,"Vehiculo se ha registrado correctamente");
                             alerta.show();

@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author luisa
  */
-public class Oferta implements Serializable{
+public class Oferta implements Serializable,Comparable<Oferta>{
     
     
     private static final long serialVersionUID = 1L;
@@ -59,7 +59,12 @@ public class Oferta implements Serializable{
     
     @Override
     public String toString(){
-        return comprador.toString();
+        return comprador.toString()+" ($"+this.precioOferta+")";
+    }
+
+    @Override
+    public int compareTo(Oferta o) {
+         return Double.compare(this.precioOferta, o.precioOferta);
     }
     
 }

@@ -60,12 +60,12 @@
             <RowConstraints maxHeight="125.5999816894531" minHeight="10.0" prefHeight="125.5999816894531" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="usertxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" />
-            <TextField fx:id="motortxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="combustxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="colortxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="transmitxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="prectxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="usertxt" editable="false" maxWidth="200.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="1" />
+            <TextField fx:id="motortxt" editable="false" maxWidth="200.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="combustxt" editable="false" maxWidth="200.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="colortxt" editable="false" maxWidth="200.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="transmitxt" editable="false" maxWidth="200.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="prectxt" editable="false" maxWidth="200.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Vendedor:" textFill="WHITE" GridPane.halignment="CENTER">
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -110,11 +110,11 @@
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Label>
-            <TextField fx:id="vehitxt" editable="false" maxWidth="200.0" GridPane.columnIndex="3" />
-            <TextField fx:id="aniotxt" editable="false" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField fx:id="recortxt" editable="false" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <TextField fx:id="vidriostxt" editable="false" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <TextField fx:id="tractxt" editable="false" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <TextField fx:id="vehitxt" editable="false" maxWidth="200.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="3" />
+            <TextField fx:id="aniotxt" editable="false" maxWidth="200.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="recortxt" editable="false" maxWidth="200.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="vidriostxt" editable="false" maxWidth="200.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextField fx:id="tractxt" editable="false" maxWidth="200.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <ImageView fx:id="vehiImg" fitHeight="143.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP" />
          </children>
       </GridPane>
@@ -134,7 +134,7 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <TextField fx:id="ofertarTxt" maxWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <TextField fx:id="ofertarTxt" maxWidth="150.0" stylesheets="@../../../../css/textfield.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
             <Label text="¿Qué precio desea ofertar? ($): " textFill="WHITE" GridPane.halignment="RIGHT">
                <font>
                   <Font name="System Bold" size="13.0" />

@@ -28,6 +28,8 @@ public class MenuUsuarioController {
     private Usuario usuario;
     @FXML
     private Button consultarOfer;
+    @FXML
+    private Button botonPerfil;
     
     public void setUsuario(Usuario usuario){
         this.usuario=usuario;
@@ -84,6 +86,18 @@ public class MenuUsuarioController {
         Parent root = (Parent) loader.load();
         OfertasVehiculosController ofertaControlador=loader.getController();
         ofertaControlador.setUsuario(usuario);
+        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene escena=new Scene(root);
+        stage.setScene(escena);
+        stage.show();
+    }
+
+    @FXML
+    private void verPerfil(ActionEvent event) throws IOException{
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/ec/edu/espol/proyectoparcial2/PerfilUsuario.fxml"));
+        Parent root = (Parent) loader.load();
+        PerfilUsuarioController userControlador=loader.getController();
+        userControlador.setUsuario(usuario);
         Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         Scene escena=new Scene(root);
         stage.setScene(escena);

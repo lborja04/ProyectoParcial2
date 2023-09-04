@@ -75,7 +75,7 @@ public class VehiculosBuscadosController{
     private Button botonAtras;
     
     public void setTexto(int num){
-        numVehisLabel.setText("Se han encontrado: "+ num +" vehículo(s)");
+        numVehisLabel.setText("Se han encontrado: "+ num +" vehículo(s) acorde a sus parámetros");
     }
     
     public void setVehisTot(ArrayList<Vehiculo> v){
