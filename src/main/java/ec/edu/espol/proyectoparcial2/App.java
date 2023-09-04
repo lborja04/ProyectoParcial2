@@ -22,7 +22,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("PantallaLogin"));
         stage.setScene(scene);
         stage.setTitle("Compra-Venta de Vehiculos");
-        Image icono=new Image("carroIcono.png");
+        Image icono=new Image("/imgs/carroIcono.png");
         stage.getIcons().add(icono);
         
         stage.setOnCloseRequest((evento) -> {
