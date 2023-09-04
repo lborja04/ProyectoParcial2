@@ -16,3 +16,4 @@ ec\edu\espol\proyectoparcial2\Main.class
 ec\edu\espol\proyectoparcial2\modelo\Usuario.class
 ec\edu\espol\proyectoparcial2\modelo\Camioneta.class
 ec\edu\espol\proyectoparcial2\modelo\TipoVehiculo.class
+ec\edu\espol\proyectoparcial2\control\PerfilUsuarioController.class
