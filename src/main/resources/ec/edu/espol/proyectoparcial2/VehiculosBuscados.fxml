@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoparcial2.control.VehiculosBuscadosController">
+   <top>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="numVehisLabel" text="Se han encontrado: x vehículos" GridPane.halignment="CENTER" />
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0" GridPane.rowIndex="1">
+               <children>
+                  <ChoiceBox fx:id="vehisCbox" prefWidth="150.0" />
+                  <Button fx:id="botonAtras" mnemonicParsing="false" onAction="#regresar" text="Volver al menú" />
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+   </top>
+   <center>
+      <GridPane maxWidth="1000.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.2000366210938" minWidth="10.0" prefWidth="254.40004882812502" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="298.99993896484375" minWidth="10.0" prefWidth="177.59995117187498" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.59990234375005" minWidth="10.0" prefWidth="225.59990234375005" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.60001220703123" minHeight="10.0" prefHeight="33.60001831054686" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="125.5999816894531" minHeight="10.0" prefHeight="125.5999816894531" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="usertxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" />
+            <TextField fx:id="motortxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="combustxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="colortxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="transmitxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="prectxt" editable="false" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Vendedor:" GridPane.halignment="CENTER" />
+            <Label text="Tipo de motor:" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label text="Tipo de combustible:" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label text="Color:" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label text="Transmisión:" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Label text="Precio ($):" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <Label text="Marca/Modelo:" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <Label text="Año de fabricación:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label text="Recorrido (Km):" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label text="N° de vidrios:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label text="Tracción:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <TextField fx:id="vehitxt" editable="false" maxWidth="200.0" GridPane.columnIndex="3" />
+            <TextField fx:id="aniotxt" editable="false" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="recortxt" editable="false" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="vidriostxt" editable="false" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextField fx:id="tractxt" editable="false" maxWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <ImageView fx:id="vehiImg" fitHeight="143.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+         </children>
+      </GridPane>
+   </center>
+   <bottom>
+      <GridPane prefHeight="126.0" prefWidth="842.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="botonOfertar" mnemonicParsing="false" onAction="#ofertar" text="Ofertar" GridPane.columnIndex="2" />
+            <TextField fx:id="ofertarTxt" maxWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Label text="¿Qué precio desea ofertar? ($): " GridPane.halignment="RIGHT" />
+         </children>
+      </GridPane>
+   </bottom>
+</BorderPane>
