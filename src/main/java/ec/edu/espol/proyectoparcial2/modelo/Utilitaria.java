@@ -140,37 +140,43 @@ public class Utilitaria {
     }
     
     public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
-        //La dirección de correo de envío
-        String remitente = "ventavehiculosespol@gmail.com";
-        //La clave de aplicación obtenida según se explica en este artículo:
-        String claveemail = "yzhvrpcjypmsxxqw";
+        Properties configProps = new Properties();
+
+        try {
+            configProps.load(new FileInputStream("configuracionCorreo.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        String remitente = configProps.getProperty("remitente");
+        String claveemail = configProps.getProperty("claveemail");
+        String smtpHost = configProps.getProperty("smtp.host");
+        String smtpPort = configProps.getProperty("smtp.port");
 
         Properties props = System.getProperties();
-        props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
+        props.put("mail.smtp.host", smtpHost);
         props.put("mail.smtp.user", remitente);
-        props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
-        props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
-        props.put("mail.smtp.port", "587"); //El puerto SMTP seguro de Google
-
-        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");  //Confía en todos los certificados 
-
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", smtpPort);
+        props.put("mail.smtp.ssl.trust", smtpHost);
         props.put("mail.debug", "true");
-        Session session = Session.getDefaultInstance(props);
 
+        Session session = Session.getDefaultInstance(props);
         MimeMessage message = new MimeMessage(session);
 
         try {
             message.setFrom(new InternetAddress(remitente));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));   //Se podrían añadir varios de la misma manera
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
             message.setSubject(asunto);
             message.setText(cuerpo);
             Transport transport = session.getTransport("smtp");
-            transport.connect("smtp.gmail.com", remitente, claveemail);
+            transport.connect(smtpHost, remitente, claveemail);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-        }
-        catch (MessagingException me) {
-            me.printStackTrace();   //Si se produce un error
+        } catch (MessagingException me) {
+            me.printStackTrace();
         }
     }
 }

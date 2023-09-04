@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoparcial2.control.PantallaLoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="631.0" stylesheets="@../../../../css/fondo.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoparcial2.control.PantallaLoginController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -29,14 +29,14 @@
          <children>
             <PasswordField fx:id="clavePasswordField" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
             <TextField fx:id="usuarioTextField" prefHeight="26.0" prefWidth="165.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Label text="Correo:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <Label text="Correo:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label prefWidth="94.0" text="Contraseña:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <Label prefWidth="94.0" text="Contraseña:" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Label>
          </children>
@@ -58,17 +58,17 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="botonLoggear" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loggearse" text="Iniciar Sesión" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Button fx:id="botonLoggear" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loggearse" stylesheets="@../../../../css/botones.css" text="Iniciar Sesión" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
-                  <Font size="16.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="botonRegistrar" mnemonicParsing="false" onAction="#cambiarRegistroUser" text="Regístrate" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <Button fx:id="botonRegistrar" mnemonicParsing="false" onAction="#cambiarRegistroUser" stylesheets="@../../../../css/botones.css" text="Regístrate" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <font>
-                  <Font size="16.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Label text="¿Aún no tienes cuenta?" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <Label text="¿Aún no tienes cuenta?" textFill="WHITE" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                <font>
                   <Font size="14.0" />
                </font>
@@ -89,9 +89,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Venta de Vehículos" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Label text="Venta de Vehículos" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
-                  <Font size="30.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
          </children>

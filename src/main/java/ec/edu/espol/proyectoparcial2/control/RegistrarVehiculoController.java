@@ -34,9 +34,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 
 /**
@@ -106,8 +114,16 @@ public class RegistrarVehiculoController implements Initializable{
         
         for(int j=0;j<vehiculoRqs.size();j++){
             Label label = new Label(vehiculoRqs.get(j)+" :");
+            label.setTextFill(Color.WHITE);
+            label.setFont(Font.font("System", FontWeight.BOLD, 12));
             TextField textField = new TextField();
             textField.setMaxWidth(200);
+            textField.setStyle("-fx-background-repeat: no-repeat;");
+            textField.setStyle("-fx-background-size: cover;");
+            textField.setBorder(Border.EMPTY);
+            BackgroundFill backgroundFill = new BackgroundFill(Color.web("#FFF5E099"), CornerRadii.EMPTY, Insets.EMPTY);
+            Background background = new Background(backgroundFill);
+            textField.setBackground(background);
             cj.add(label, 0, j);
             cj.add(textField, 1, j);
             GridPane.setHalignment(label, HPos.CENTER);

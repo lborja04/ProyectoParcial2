@@ -1,0 +1,7 @@
+.button{
+    -fx-background-image:url('../Botones.png');
+    -fx-background-size:cover;
+    -fx-background-repeat: no-repeat;
+    -fx-border-color: black;
+    -fx-border-width: 0;
+}
