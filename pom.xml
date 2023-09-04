@@ -107,7 +107,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.pooespol.apppeliculas_2023_1.Starter</mainClass>
+                            <mainClass>ec.edu.espol.proyectoparcial2.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
