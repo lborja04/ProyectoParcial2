@@ -188,18 +188,23 @@ public class RegistrarVehiculoController implements Initializable{
                     if (imagenElegida != null) {
                         try {
                             Path destPath;
+                            String relativePath;
+
                             if (getClass().getProtectionDomain().getCodeSource().getLocation().getPath().endsWith(".jar")) {
                                 String jarDir = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()).getParent();
                                 destPath = Paths.get(jarDir, "imgs", imagenElegida.getName());
-                            } else { 
+                                relativePath = "imgs/" + imagenElegida.getName();
+                            } else {
                                 destPath = Paths.get("src", "main", "resources", "imgs", imagenElegida.getName());
+                                relativePath = "src/main/resources/imgs/" + imagenElegida.getName();
                             }
-
+                            
                             Files.createDirectories(destPath.getParent());
                             Files.copy(imagenElegida.toPath(), destPath, StandardCopyOption.REPLACE_EXISTING);
-                            
+
                             ArrayList<Vehiculo> vehis = Vehiculo.readListFileSer("vehiculos.ser");
-                            nuevo.setImagen("/imgs/" + imagenElegida.getName());
+                            nuevo.setImagen(relativePath);
+                            
                             vehis.add(nuevo);
                             Vehiculo.saveListFileSer("vehiculos.ser", vehis);
                             usuario.getVehiculos().add(nuevo);

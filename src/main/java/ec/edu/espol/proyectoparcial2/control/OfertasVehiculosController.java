@@ -8,6 +8,7 @@ import ec.edu.espol.proyectoparcial2.modelo.Oferta;
 import ec.edu.espol.proyectoparcial2.modelo.Usuario;
 import ec.edu.espol.proyectoparcial2.modelo.Utilitaria;
 import ec.edu.espol.proyectoparcial2.modelo.Vehiculo;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -79,7 +80,16 @@ public class OfertasVehiculosController {
         Vehiculo vehi=vehisCbox.getValue();
         vehiPlacatxt.setText(vehi.getPlaca());
         vehiTxt.setText(vehi.toString());
-        vehiImg.setImage(new Image(vehi.getImagen()));
+        
+        String imagePath;
+        if (getClass().getProtectionDomain().getCodeSource().getLocation().getPath().endsWith(".jar")) {
+            String jarDir = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()).getParent();
+            imagePath = jarDir + "/" + vehi.getImagen(); 
+        } else {
+            imagePath = vehi.getImagen();
+        }
+        vehiImg.setImage(new Image(new File(imagePath).toURI().toString()));
+        
         ArrayList<Oferta> ofertas=new ArrayList<>();
         for(Vehiculo v:vehisTot){
             if(vehi.equals(v))
@@ -119,7 +129,7 @@ public class OfertasVehiculosController {
         if(oferta!=null){
             Alert a=new Alert(Alert.AlertType.CONFIRMATION,"¿Quiere aceptar esta oferta?");
             if(a.showAndWait().get()==ButtonType.OK){
-                Alert b=new Alert(Alert.AlertType.INFORMATION,"Notificando al comprador...");
+                Alert b=new Alert(Alert.AlertType.INFORMATION,"Notificando al comprador... (Espere un momento)");
                 b.show();
                 String asunto="OFERTA ACEPTADA";
                 String cuerpo="SU OFERTA POR "+oferta.getVehiculo()+" HA SIDO ACEPTADA, EL VENDEDOR PRONTO SE PONDRÁ EN CONTACTO.";                                                

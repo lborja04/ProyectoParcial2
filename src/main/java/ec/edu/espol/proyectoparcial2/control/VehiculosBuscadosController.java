@@ -9,6 +9,7 @@ import ec.edu.espol.proyectoparcial2.modelo.Carro;
 import ec.edu.espol.proyectoparcial2.modelo.Oferta;
 import ec.edu.espol.proyectoparcial2.modelo.Usuario;
 import ec.edu.espol.proyectoparcial2.modelo.Vehiculo;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
@@ -117,7 +118,16 @@ public class VehiculosBuscadosController{
             tractxt.setText(cam.getTraccion());
         }
         prectxt.setText(vehi.getPrecio()+"");
-        vehiImg.setImage(new Image(vehi.getImagen()));
+        
+        String imagePath;
+        if (getClass().getProtectionDomain().getCodeSource().getLocation().getPath().endsWith(".jar")) {
+            String jarDir = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()).getParent();
+            imagePath = jarDir + "/" + vehi.getImagen(); 
+        } else {
+            imagePath = vehi.getImagen();
+        }
+
+        vehiImg.setImage(new Image(new File(imagePath).toURI().toString()));
     }
     
     public void clear(){
