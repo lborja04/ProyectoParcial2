@@ -32,6 +32,7 @@ import ec.edu.espol.proyectoparcial2.modelo.Utilitaria;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
@@ -186,27 +187,39 @@ public class RegistrarVehiculoController implements Initializable{
                     }
                     if (imagenElegida != null) {
                         try {
-                            Path destPath = new File("src/main/resources/imgs/" + imagenElegida.getName()).toPath();
+                            Path destPath;
+                            if (getClass().getProtectionDomain().getCodeSource().getLocation().getPath().endsWith(".jar")) {
+                                String jarDir = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()).getParent();
+                                destPath = Paths.get(jarDir, "imgs", imagenElegida.getName());
+                            } else { 
+                                destPath = Paths.get("src", "main", "resources", "imgs", imagenElegida.getName());
+                            }
+
+                            Files.createDirectories(destPath.getParent());
                             Files.copy(imagenElegida.toPath(), destPath, StandardCopyOption.REPLACE_EXISTING);
-                            ArrayList<Vehiculo> vehis=Vehiculo.readListFileSer("vehiculos.ser");
+                            
+                            ArrayList<Vehiculo> vehis = Vehiculo.readListFileSer("vehiculos.ser");
                             nuevo.setImagen("/imgs/" + imagenElegida.getName());
                             vehis.add(nuevo);
                             Vehiculo.saveListFileSer("vehiculos.ser", vehis);
                             usuario.getVehiculos().add(nuevo);
-                            int indice=usuarios.indexOf(usuario);
-                            if (indice != -1)
+                            int indice = usuarios.indexOf(usuario);
+                            if (indice != -1) {
                                 usuarios.set(indice, usuario);
+                            }
                             Usuario.saveListFileSer("usuarios.ser", usuarios);
-                            Alert alerta=new Alert(Alert.AlertType.INFORMATION,"Vehiculo se ha registrado correctamente");
+
+                            Alert alerta = new Alert(Alert.AlertType.INFORMATION, "Vehiculo se ha registrado correctamente");
                             alerta.show();
                             cambiarPantallaUsua(event);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     } else {
-                        Alert a=new Alert(Alert.AlertType.ERROR,"No ha seleccionado una imagen");
+                        Alert a = new Alert(Alert.AlertType.ERROR, "No ha seleccionado una imagen");
                         a.show();
                     }
+
                     
                 }
                 catch(NumberFormatException errorNum){
